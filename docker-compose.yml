@@ -29,6 +29,7 @@ services:
       context: ./npm-custom-image
       dockerfile: Dockerfile
     restart: unless-stopped
+    container_name: npm_app_1
     ports:
       - '80:80'
       - '81:81'
