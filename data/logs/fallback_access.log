@@ -1,0 +1,1 @@
+[12/Jul/2023:13:19:51 +0000] - - 404 - GET http localhost "/favicon.ico" [Client 172.18.0.1] [Length 183] [Gzip 3.21] [Sent-to ] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" "http://localhost:82/nginx_status"

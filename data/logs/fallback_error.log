@@ -1,0 +1,2 @@
+2023/07/12 13:19:51 [error] 14448#14448: *328 open() "/etc/nginx/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.18.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:82", referrer: "http://localhost:82/nginx_status"
+2023/07/12 13:19:51 [warn] 14448#14448: *328 using uninitialized "server" variable while logging request, client: 172.18.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:82", referrer: "http://localhost:82/nginx_status"
