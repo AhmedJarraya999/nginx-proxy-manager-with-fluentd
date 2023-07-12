@@ -1,0 +1,6 @@
+web_listen_address: 0.0.0.0:9913
+web_telemetry_path: /metrics
+#nginx_scrape_uri: npm_app_1:81/api/proxy/:nginx/upstreams
+#nginx_scrape_uri: npm_app_1:82/nginx_status/:nginx/upstreams
+nginx_scrape_uri: npm_app_1:82/nginx_status
+

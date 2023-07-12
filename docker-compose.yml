@@ -14,7 +14,6 @@ services:
       - .test-odoo/addons_entreprise:/mnt/entreprise_addons
       - odoo-web-data:/var/lib/odoo
     restart: always
-
   db:
     image: postgres:13
     container_name: test_odoo_db
@@ -26,7 +25,9 @@ services:
       - postgres_test_volume:/var/lib/postgresql/data
     restart: always
   app:
-    image: 'flim'
+    build:
+      context: ./npm-custom-image
+      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - '80:80'
@@ -39,6 +40,13 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     networks:
       - mynetwork
+  nginx_vts_exporter:
+    image: sophos/nginx-vts-exporter
+    ports:
+      - 9913:9913
+    volumes:
+      - ./vts/nginx_vts_exporter.yml:/etc/nginx_vts_exporter/nginx_vts_exporter.yml
+    command: ["--config.file=/etc/nginx_vts_exporter/nginx_vts_exporter.yml"]
 volumes:
      postgres_test_volume:
      odoo-web-data:
