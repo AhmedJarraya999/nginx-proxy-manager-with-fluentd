@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  web:
+    image: odoo:14.0
+    container_name: test_odoo
+    depends_on:
+      - db
+    ports:
+      - "8079:8069"
+      - "8170:8072"
+    volumes:
+      - .test-odoo/config:/etc/odoo
+      - .test-odoo/addons:/mnt/extra-addons
+      - .test-odoo/addons_entreprise:/mnt/entreprise_addons
+      - odoo-web-data:/var/lib/odoo
+    restart: always
+
+  db:
+    image: postgres:13
+    container_name: test_odoo_db
+    ports:
+      - "5431:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres_test_volume:/var/lib/postgresql/data
+    restart: always
+  app:
+    image: 'flim'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+      - '82:82'
+      - '24224:24224'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - mynetwork
+volumes:
+     postgres_test_volume:
+     odoo-web-data:
+networks:
+  mynetwork:
+    driver: bridge
+
